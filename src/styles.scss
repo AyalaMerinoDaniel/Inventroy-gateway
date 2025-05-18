@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif !important;
+}
+
+:root {
+  --primary-color: #3f51b5;
+  --primary-light: #eae8f1;
+  --secundary-color: #10cfc9;
+  --tertiary-color: #ff3c00;
+  --accent-color: #027dc9;
+  --gray-black: #027dc9;
+  --gray: #A9A9A9;
+  --gray-light: #027dc9;
+  --background-app: #f7f9fc;
+  --box-shadow: #00000029;
+  --input-gray: #f0f2f5;
+  --gray-00: #f5f6f7;
+  --gray-05: #f2f3f5;
+  --gray-10: #ebedf0;
+  --gray-20: #dadde1;
+  --gray-25: #ccd0d5;
+  --gray-30: #bec3c9;
+  --gray-45: #8d949e;
+  --gray-70: #606770;
+  --gray-80: #444950;
+  --gray-90: #303338;
+  --gray-100: #1c1e21;
+  --white: #ffffff;
+  --black: #000000;
+  --warning: #fcd600;
+  --background-support-button: #3022771a;
+  --toast-success: #008001;
+  --toast-warning: #ff7518;
+  --toast-error: #ff0000;
+  --toast-info: #2d68c4;
+}
+
+.body-card {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-card {
+  padding: 10px;
+  background-color: var(--primary-color);
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: var(--white);
+}
+
+.pointer {
+  cursor: pointer;
+}

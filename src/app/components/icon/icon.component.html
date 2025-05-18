@@ -1,0 +1,21 @@
+<div
+  [style.width.px]="width"
+  [style.height.px]="height"
+  class="smrs-icon-class"
+>
+  <ng-container *ngIf="image && !hasError; else elseTemplate">
+    <div
+      [id]="idContent"
+      class="smrs-icon-class"
+      [style.width.px]="width"
+      [style.height.px]="height"
+    ></div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <img
+      [style.width.px]="width"
+      [style.height.px]="height"
+      src="/assets/font-awasome-icons/boxes-stacked-solid.svg"
+    />
+  </ng-template>
+</div>

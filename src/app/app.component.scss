@@ -1,0 +1,53 @@
+.root-container {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.container-toolbar {
+  flex: 0 0 64px !important;
+}
+
+.container-drawer {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+mat-drawer-container {
+  flex: 1 1 auto;
+  height: 100%;
+  overflow: hidden !important;
+}
+
+mat-drawer.closed {
+  width: 60px;
+  transition: width 0.3s ease;
+}
+
+::ng-deep .mat-drawer-inner-container {
+  overflow-x: hidden !important;
+}
+
+.menu-items {
+  padding: 0px 5px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  border: 1px;
+  padding: 7px;
+}
+
+.router-outlet {
+  flex: 1 1 auto;
+  height: 100% !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease;
+  padding: 16px;
+}
+

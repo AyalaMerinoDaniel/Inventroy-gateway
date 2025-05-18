@@ -1,0 +1,20 @@
+<form [formGroup]="form">
+  <div class="w-100">
+    <mat-form-field [appearance]="appearance">
+      <mat-label>{{ label }}</mat-label>
+      <input
+        matInput
+        [type]="type"
+        [placeholder]="placeholder"
+        [formControlName]="controlName"
+      />
+      <mat-error
+        *ngFor="let validation of validationMessages"
+      >
+      <span *ngIf="hasFormError(controlName, validation.type)">
+        {{ validation.message }}
+      </span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>
