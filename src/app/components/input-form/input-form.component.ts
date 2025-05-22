@@ -9,8 +9,8 @@ import { ValidationMessagesModel } from 'src/app/models/validations-messages.mod
 })
 export class InputFormComponent implements OnInit {
   @Input() form!: FormGroup;
-  @Input() controlName!: string;
-  @Input() label!: string;
+  @Input() controlName: string = '';
+  @Input() label: string= '';
   @Input() placeholder: string = '';
   @Input() type: string = 'text';
   @Input() appearance: 'fill' | 'outline' | 'standard' | 'legacy' = 'outline';

@@ -7,7 +7,41 @@
         </div>
       </div>
       <div class="content-card p-3">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mb-3">
+        <div class="mb-2">
+          <app-base-filters [titlePage]="'Filtros'">
+            <div content>
+              <form [formGroup]="form">
+                <div class="col">
+                  <app-input-form
+                    [form]="form"
+                    [controlName]="keyFormNameProduct"
+                    [label]="'Nombre del producto'"
+                    [placeholder]="'Nombre del producto'"
+                  ></app-input-form>
+                </div>
+              </form>
+            </div>
+
+            <div footer>
+              <div class="d-flex">
+                <app-stroked-button
+                  label="Limpiar"
+                  class="me-2"
+                  (click)="resetForm()"
+                ></app-stroked-button>
+                <app-flat-button
+                  label="Buscar"
+                  (click)="getListProducts()"
+                ></app-flat-button>
+              </div>
+            </div>
+          </app-base-filters>
+        </div>
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          class="mat-elevation-z8 mb-3"
+        >
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>Id</th>
             <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -49,6 +83,7 @@
                   image="/assets/font-awasome-icons/edit.svg"
                   color="primary-color"
                   matTooltip="Editar producto"
+                  (click)="showDialogUpdateProduct()"
                 ></app-icon>
 
                 <app-icon
@@ -65,13 +100,16 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
 
-        <mat-paginator
-          [length]="totalItems"
-          [pageSize]="limit"
-          [pageSizeOptions]="[5, 10, 20]"
-          (page)="onPageChange($event)"
-        >
-        </mat-paginator>
+        <div class="content-end">
+          <app-paginator
+            [totalItems]="totalItems"
+            [pageSize]="limit"
+            [currentPage]="page"
+            [maxVisiblePages]="5"
+            (pageChange)="onPageChange($event)"
+          >
+          </app-paginator>
+        </div>
       </div>
     </div>
   </div>

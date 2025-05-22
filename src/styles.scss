@@ -40,6 +40,39 @@ body {
   --toast-info: #2d68c4;
 }
 
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+//sizes text
+.text-big {
+  font-size: 1.62rem;
+}
+
+.text-large {
+  font-size: 1.3rem;
+}
+
+.text-medium {
+  font-size: 1.18rem;
+}
+
+.text {
+  font-size: 1rem;
+}
+
+.text-small {
+  font-size: 13px;
+}
+
+.text-xsmall {
+  font-size: 11px;
+}
+
 .body-card {
   height: 100% !important;
   display: flex;
@@ -57,4 +90,16 @@ body {
 
 .pointer {
   cursor: pointer;
+}
+
+.content-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="title-base-filter p-2">
+    <div class="text-large text-primary text-bold">{{ titlePage }}</div>
+    <div>
+      <app-flat-button
+        label="Agregar"
+        color="primary"
+        icon="add"
+      ></app-flat-button>
+    </div>
+  </div>
+  <div class="content-base-filter">
+    <ng-content select="[content]"></ng-content>
+  </div>
+
+  <div class="content-center p-2">
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>

@@ -123,10 +123,8 @@ export class IconComponent implements OnInit {
  
   changeColor(color: string) {
     try {
-      console.log(color)
       this.svg?.setAttribute('fill', color);
     } catch (e: any) {
-      console.log(e);
     }
   }
 
@@ -138,8 +136,6 @@ export class IconComponent implements OnInit {
           return response;
         }),
         catchError((error) => {
-          console.log(error, url);
-
           return '_';
         })
       )

@@ -1,0 +1,36 @@
+<form [formGroup]="formProduct">
+  <div class="row">
+    <div class="col-12">
+      <app-input-form
+        [form]="formProduct"
+        [controlName]="keyFormName"
+        [label]="'Nombre del producto'"
+        [placeholder]="'Nombre del producto'"
+      ></app-input-form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+        <app-input-form
+        [form]="formProduct"
+        [controlName]="keyFormdescription"
+        [label]="'Descripción'"
+        [placeholder]="'Descripción'"
+      ></app-input-form>
+    </div>
+    <div class="col-6">
+        <app-input-form
+        [form]="formProduct"
+        [controlName]="keyFormPrice"
+        type="number"
+        [label]="'Precio'"
+        [placeholder]="'Precio'"
+      ></app-input-form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+        AQUI VA A IR EL SELECTOR
+    </div>
+  </div>
+</form>

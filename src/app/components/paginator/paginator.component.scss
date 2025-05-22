@@ -1,0 +1,42 @@
+.paginator {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.page-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.page-btn.active {
+  background-color: #3f51b5;
+  color: white;
+  font-weight: bold;
+}
+
+.page-btn:disabled {
+  background-color: transparent;
+  cursor: default;
+  color: #aaa;
+  font-weight: normal;
+}
+
+.actions-btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px var(--gray-25) solid;
+  background-color: var(--white);
+  color: var(--primary-color); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
