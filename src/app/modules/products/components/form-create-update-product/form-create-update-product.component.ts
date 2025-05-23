@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EndpointsPaths, getFullEndpoint } from 'src/app/endpoints/endpoints';
 
 @Component({
   selector: 'app-form-create-update-product',
@@ -14,12 +15,14 @@ export class FormCreateUpdateProductComponent implements OnInit {
   keyFormPrice = 'price';
   keyFormCategoryId = 'categoryId';
 
+  endpoint = getFullEndpoint(EndpointsPaths.categorySelector);
+
   constructor() {
     this.formProduct = new FormGroup({
-      [`${this.keyFormName}`]: new FormControl(''),
-      [`${this.keyFormdescription}`]: new FormControl(''),
-      [`${this.keyFormPrice}`]: new FormControl(''),
-      [`${this.keyFormCategoryId}`]: new FormControl(''),
+      [`${this.keyFormName}`]: new FormControl('', Validators.required),
+      [`${this.keyFormdescription}`]: new FormControl('',Validators.required),
+      [`${this.keyFormPrice}`]: new FormControl(null, Validators.required),
+      [`${this.keyFormCategoryId}`]: new FormControl('',Validators.required),
     })
    }
 

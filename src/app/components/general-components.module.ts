@@ -9,6 +9,7 @@ import { StrokedButtonComponent } from './stroked-button/stroked-button.componen
 import { BaseFiltersComponent } from './base-filters/base-filters.component';
 import { FlatButtonComponent } from './flat-button/flat-button.component';
 import { BaseDialogComponent } from './base-dialog/base-dialog.component';
+import { SelectorComponent } from './selector/selector.component';
 
 @NgModule({
   declarations:[
@@ -18,7 +19,8 @@ import { BaseDialogComponent } from './base-dialog/base-dialog.component';
     StrokedButtonComponent,
     BaseFiltersComponent,
     FlatButtonComponent,
-    BaseDialogComponent
+    BaseDialogComponent,
+    SelectorComponent
   ],
   imports: [
     MaterialModule,
@@ -33,7 +35,8 @@ import { BaseDialogComponent } from './base-dialog/base-dialog.component';
     StrokedButtonComponent,
     BaseFiltersComponent,
     FlatButtonComponent,
-    BaseDialogComponent
+    BaseDialogComponent,
+    SelectorComponent
   ]
 })
 export class GeneralComponentsModule {}

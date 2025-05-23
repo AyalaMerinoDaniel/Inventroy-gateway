@@ -11,7 +11,7 @@
   </div>
   <div class="row">
     <div class="col-6">
-        <app-input-form
+      <app-input-form
         [form]="formProduct"
         [controlName]="keyFormdescription"
         [label]="'Descripción'"
@@ -19,7 +19,7 @@
       ></app-input-form>
     </div>
     <div class="col-6">
-        <app-input-form
+      <app-input-form
         [form]="formProduct"
         [controlName]="keyFormPrice"
         type="number"
@@ -29,8 +29,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
-        AQUI VA A IR EL SELECTOR
+    <div class="col-12">
+      <app-selector
+        [form]="formProduct"
+        [controlName]="keyFormCategoryId"
+        label="Categoría"
+        [endpoint]="endpoint"
+      >
+      </app-selector>
     </div>
   </div>
 </form>

@@ -1,12 +1,44 @@
 import { environment } from "../../environments/environment.dev";
 
 export enum EndpointsPaths {
-  product = '/product'
+  //products
+  product = '/product',
+  productCreate = '/product/create',
+  getProductById= '/product/{id}',
+  productUpdate = '/product/update',
+
+  //categories
+  categorySelector = '/category/selector'
 }
 
 export const endpointList: EndpointModel[] = [
+  //products
   {
     endpoint: EndpointsPaths.product,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.productCreate,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.getProductById,
+    environment: environment.apiUrl,
+    variable: ['{id}'],
+  },
+  {
+    endpoint: EndpointsPaths.productUpdate,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+
+
+
+  //categories
+  {
+    endpoint: EndpointsPaths.categorySelector,
     environment: environment.apiUrl,
     variable: [],
   },

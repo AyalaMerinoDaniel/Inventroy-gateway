@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { GetListBaseModel } from 'src/app/models/get-list-base.model';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProductModel } from '../../models/products.model';
+import { ProductLIstModel } from '../../models/products.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUpdateproductDialogComponent } from '../../dialogs/create-updateproduct-dialog/create-updateproduct-dialog.component';
@@ -21,8 +21,8 @@ export class MainProductsComponent implements OnInit {
   value: string = "";
   totalItems: number = 0;
 
-  listProducts: ProductModel [] = []; 
-  dataSource = new MatTableDataSource<ProductModel>();
+  listProducts: ProductLIstModel [] = []; 
+  dataSource = new MatTableDataSource<ProductLIstModel>();
   displayedColumns: string[] = [
     'id', 
     'name', 
@@ -86,12 +86,13 @@ resetForm(){
   this.getListProducts();
 }
 
-showDialogUpdateProduct(){
-  this.matDialog.open(CreateUpdateproductDialogComponent, {
+showDialogCreateOrUpdateProduct(id?: number){
+  const ref = this.matDialog.open(CreateUpdateproductDialogComponent, {
     width: '40%',
     height: 'auto',
     disableClose: true
   });
+  ref.componentInstance.idProduct = id;
 }
 
 }

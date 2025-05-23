@@ -34,4 +34,12 @@ export class InputFormComponent implements OnInit {
     return false;
   }
 
+  emitValue(){
+    var value = this.form.get(this.controlName)?.value;
+    if (this.type === 'number') {
+      value = value === '' ? null : Number(value);
+    }
+    this.form.get(this.controlName)?.setValue(value);
+  }
+
 }

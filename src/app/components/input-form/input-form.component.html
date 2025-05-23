@@ -6,6 +6,7 @@
         [type]="type"
         [placeholder]="placeholder"
         [formControlName]="controlName"
+        (input)="emitValue()"
       />
       <mat-error *ngFor="let validation of validationMessages">
         <span *ngIf="hasFormError(controlName, validation.type)">

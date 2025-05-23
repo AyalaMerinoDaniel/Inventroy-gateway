@@ -1,8 +1,13 @@
-<app-base-dialog titleDialog="Crear Producto">
+<app-base-dialog [titleDialog]="titleDialog">
   <div content>
-    <app-form-create-update-product></app-form-create-update-product>
+    <app-form-create-update-product
+    #formProduct
+    ></app-form-create-update-product>
   </div>
   <div footer>
-    <app-flat-button label="Guardar"></app-flat-button>
+    <app-flat-button 
+    [label]="textButton"
+    (click)="saveProduct()"
+    ></app-flat-button>
   </div>
 </app-base-dialog>

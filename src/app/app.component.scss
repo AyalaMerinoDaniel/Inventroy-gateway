@@ -16,7 +16,7 @@
 
 mat-drawer-container {
   flex: 1 1 auto;
-  height: 100%;
+  height: calc(100% - 65px) !important;
   overflow: hidden !important;
 }
 
@@ -45,7 +45,6 @@ mat-drawer.closed {
 
 .router-outlet {
   flex: 1 1 auto;
-  height: 100% !important;
   overflow: hidden !important;
   transition: all 0.3s ease;
   padding: 16px;

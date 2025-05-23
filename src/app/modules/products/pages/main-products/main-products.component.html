@@ -8,7 +8,10 @@
       </div>
       <div class="content-card p-3">
         <div class="mb-2">
-          <app-base-filters [titlePage]="'Filtros'">
+          <app-base-filters 
+          [titlePage]="'Filtros'"
+          (onClick)="showDialogCreateOrUpdateProduct()"
+          >
             <div content>
               <form [formGroup]="form">
                 <div class="col">
@@ -83,7 +86,7 @@
                   image="/assets/font-awasome-icons/edit.svg"
                   color="primary-color"
                   matTooltip="Editar producto"
-                  (click)="showDialogUpdateProduct()"
+                  (click)="showDialogCreateOrUpdateProduct(element.id)"
                 ></app-icon>
 
                 <app-icon

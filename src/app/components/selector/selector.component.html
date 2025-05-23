@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      type="text"
+      [matAutocomplete]="auto"
+      [formControl]="searchControl"
+    />
+
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="setItemToForm()"
+      [displayWith]="displayFn"
+    >
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option.value }}
+      </mat-option>
+
+      <mat-option *ngIf="loading && !selectedItem" class="loading-option" disabled>
+        <mat-spinner diameter="20"></mat-spinner>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

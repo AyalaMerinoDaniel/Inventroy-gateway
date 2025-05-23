@@ -1,11 +1,12 @@
 <div class="card">
   <div class="title-base-filter p-2">
-    <div class="text-large text-primary text-bold">{{ titlePage }}</div>
+    <div class="text-large text-color-primary text-bold">{{ titlePage }}</div>
     <div>
       <app-flat-button
         label="Agregar"
         color="primary"
         icon="add"
+        (click)="created()"
       ></app-flat-button>
     </div>
   </div>

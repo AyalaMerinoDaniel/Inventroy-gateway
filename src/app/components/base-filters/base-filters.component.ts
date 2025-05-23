@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-base-filters',
@@ -7,9 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BaseFiltersComponent implements OnInit {
   @Input() titlePage: string = '';
+  @Output() onClick = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  created(){
+    this.onClick.emit();
   }
 
 }
