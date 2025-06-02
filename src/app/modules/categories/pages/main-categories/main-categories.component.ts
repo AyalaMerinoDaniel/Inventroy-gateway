@@ -62,12 +62,17 @@ export class MainCategoriesComponent implements OnInit {
 
   getListCategories(){
     const body = this.getData();
-    this.categoriesService.getListCategories(body).subscribe(res=>{
-      if(res.statusCode === 200){
-        this.listCategories = res.result.results;
-        this.dataSource.data = this.listCategories;
-        this.totalItems = res.result.total;
-      }
+    this.dialogService.showDialogLoading();
+    this.categoriesService.getListCategories(body).subscribe({
+      next: res=>{
+        if(res.statusCode === ResponseTypeEnum.OK){
+          this.dialogService.closeDialogLoading();
+          this.listCategories = res.result.results;
+          this.dataSource.data = this.listCategories;
+          this.totalItems = res.result.total;
+        }
+      }, 
+      error: _ => this.dialogService.closeDialogLoading()
     });
   }
 
@@ -108,10 +113,12 @@ export class MainCategoriesComponent implements OnInit {
   }
 
   requestDeleteCategory(id: number){
-  this.categoriesService.deleteCategory(id).subscribe(res=>{
-    if(res.statusCode === ResponseTypeEnum.OK){
-      this.messageService.showSuccess(res.friendlyMessage[0]);
-      this.onPageChange(1);
+  this.categoriesService.deleteCategory(id).subscribe({
+    next: res=>{
+      if(res.statusCode === ResponseTypeEnum.OK){
+        this.messageService.showSuccess(res.friendlyMessage[0]);
+        this.onPageChange(1);
+      }
     }
   })
 }

@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateUpdateproductDialogComponent } from '../../dialogs/create-updateproduct-dialog/create-updateproduct-dialog.component';
 import { DialogsService } from 'src/app/services/dialogs-service/dialogs.service';
 import { MessagesService } from 'src/app/services/message-service/messages.service';
+import { ResponseTypeEnum } from 'src/app/enums/response-type';
 
 @Component({
   selector: 'app-main-products',
@@ -63,12 +64,17 @@ export class MainProductsComponent implements OnInit {
 
   getListProducts(){
     const body = this.getDataModel();
-    this.productService.getListProducts(body).subscribe(res=>{
-      if(res.statusCode === 200){
-        this.listProducts = res.result.results;
-        this.dataSource.data = this.listProducts;
-        this.totalItems = res.result.total
-      }
+    this.dialogService.showDialogLoading();
+    this.productService.getListProducts(body).subscribe({
+      next: res=>{
+        if(res.statusCode === ResponseTypeEnum.OK){
+          this.dialogService.closeDialogLoading()
+          this.listProducts = res.result.results;
+          this.dataSource.data = this.listProducts;
+          this.totalItems = res.result.total
+        }
+      },
+      error: _ => this.dialogService.closeDialogLoading()
     })
   }
 
@@ -114,10 +120,12 @@ deleteProduct(product: ProductLIstModel){
 }
 
 requestDeleteProduct(id: number){
-  this.productService.deleteProduct(id).subscribe(res=>{
-    if(res.statusCode === 200){
-      this.messageService.showSuccess(res.friendlyMessage[0]);
-      this.onPageChange(1);
+  this.productService.deleteProduct(id).subscribe({
+    next: res=>{
+      if(res.statusCode === ResponseTypeEnum.OK){
+        this.messageService.showSuccess(res.friendlyMessage[0]);
+        this.onPageChange(1);
+      }
     }
   })
 }

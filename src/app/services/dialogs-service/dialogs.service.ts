@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { LoadingDialogComponent } from 'src/app/shared/dialogs/loading-dialog/loading-dialog.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DialogsService {
-
+ private loadingDialogRef?: MatDialogRef<LoadingDialogComponent>
   constructor(private matDialog: MatDialog) {}
 
   showDialogConfirm(title: string, message: string){
@@ -19,5 +20,22 @@ export class DialogsService {
     ref.componentInstance.message = message;
 
     return ref;
+  }
+
+  showDialogLoading(){
+    if(!this.loadingDialogRef){
+      this.loadingDialogRef = this.matDialog.open(LoadingDialogComponent, {
+      width: '25%',
+      height: '35%',
+      disableClose: true
+    });
+    }
+  }
+
+  closeDialogLoading() {
+    if (this.loadingDialogRef) {
+      this.loadingDialogRef.close();
+      this.loadingDialogRef = undefined;
+    }
   }
 }
