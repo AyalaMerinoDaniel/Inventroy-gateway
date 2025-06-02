@@ -39,4 +39,10 @@ export class ProductService {
       body
     )
   }
+
+  deleteProduct(id: number):Observable<ResponseApi>{
+    return this.http.delete<ResponseApi>(
+      getFullEndpoint(EndpointsPaths.productDeleteId, [id.toString()])
+    );
+  }
 }

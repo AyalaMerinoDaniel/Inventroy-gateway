@@ -7,6 +7,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { GeneralComponentsModule } from 'src/app/components/general-components.module';
 import { MainCategoriesComponent } from './pages/main-categories/main-categories.component';
 import { CategoriesRoutingModule } from './categories-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CategoriesRoutingModule } from './categories-routing.module';
     MaterialModule,
     GeneralComponentsModule,
     HttpClientModule,
-    CategoriesRoutingModule
+    CategoriesRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
 })

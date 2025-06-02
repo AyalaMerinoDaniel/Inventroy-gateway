@@ -8,9 +8,9 @@
       </div>
       <div class="content-card p-3">
         <div class="mb-2">
-          <app-base-filters 
-          [titlePage]="'Filtros'"
-          (onClick)="showDialogCreateOrUpdateProduct()"
+          <app-base-filters
+            [titlePage]="'Filtros'"
+            (onClick)="showDialogCreateOrUpdateProduct()"
           >
             <div content>
               <form [formGroup]="form">
@@ -94,6 +94,7 @@
                   image="/assets/font-awasome-icons/trash-solid.svg"
                   color="tertiary-color"
                   matTooltip="Eliminar producto"
+                  (click)="deleteProduct(element)"
                 ></app-icon>
               </div>
             </td>

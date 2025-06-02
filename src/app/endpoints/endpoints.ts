@@ -6,8 +6,10 @@ export enum EndpointsPaths {
   productCreate = '/product/create',
   getProductById= '/product/{id}',
   productUpdate = '/product/update',
+  productDeleteId = '/product/delete/{id}',
 
   //categories
+  category = '/category',
   categorySelector = '/category/selector'
 }
 
@@ -33,10 +35,20 @@ export const endpointList: EndpointModel[] = [
     environment: environment.apiUrl,
     variable: [],
   },
+  {
+    endpoint: EndpointsPaths.productDeleteId,
+    environment: environment.apiUrl,
+    variable: ['{id}'],
+  },
 
 
 
   //categories
+  {
+    endpoint: EndpointsPaths.category,
+    environment: environment.apiUrl,
+    variable: [],
+  },
   {
     endpoint: EndpointsPaths.categorySelector,
     environment: environment.apiUrl,

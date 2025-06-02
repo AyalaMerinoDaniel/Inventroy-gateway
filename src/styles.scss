@@ -44,6 +44,10 @@ body {
   color: var(--primary-color);
 }
 
+.text-gray {
+  color: var(--gray-45);
+}
+
 .text-bold {
   font-weight: 700;
 }
@@ -104,6 +108,8 @@ body {
   align-items: center;
 }
 
+//scroll styles
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -122,3 +128,91 @@ body {
 ::-webkit-scrollbar-track {
   background: var(--gray-10);
 }
+
+//------------------------//
+
+// messages styles
+.custom-snackbar {
+  background-color: white !important;
+  color: black !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-left: 6px solid transparent;
+  padding: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.custom-snackbar::before {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.custom-snackbar.success {
+  border-left-color: var(--toast-success);
+}
+
+.custom-snackbar.success::before {
+  content: '✔ Exito';
+  color: var(--toast-success);
+}
+
+.custom-snackbar.error {
+  border-left-color: var(--toast-error);
+}
+
+.custom-snackbar.error::before {
+  content: '✖ Error ';
+  color: var(--toast-error);
+}
+
+.custom-snackbar.warning {
+  border-left-color: var(--toast-warning);
+}
+
+.custom-snackbar.warning::before {
+  content: '⚠ Adventencia ';
+  color: var(--toast-warning);
+}
+
+.custom-snackbar.info {
+  border-left-color: var(--toast-info);
+}
+
+.custom-snackbar.info::before {
+  content: 'ℹ Información importante';
+  color: var(--toast-info);
+}
+
+.custom-snackbar.success .mat-simple-snackbar-action {
+  color: var(--toast-success) !important;
+  font-weight: 600;
+  border-bottom: 1px solid color-mix(in srgb, var(--toast-success), white 85%);
+}
+
+.custom-snackbar.error .mat-simple-snackbar-action {
+  color: var(--toast-error) !important;
+  font-weight: 600;
+  border-bottom: 1px solid color-mix(in srgb, var(--toast-error), white 85%);
+}
+
+.custom-snackbar.warning .mat-simple-snackbar-action {
+  color: var(--toast-warning) !important;
+  font-weight: 600;
+  border-bottom: 1px solid color-mix(in srgb, var(--toast-warning), white 85%);
+}
+
+.custom-snackbar.info .mat-simple-snackbar-action {
+  color: var(--toast-info) !important;
+  font-weight: 600;
+  border-bottom: 1px solid color-mix(in srgb, var(--toast-info), white 85%);
+}
+///---------------------------//
+
+
+

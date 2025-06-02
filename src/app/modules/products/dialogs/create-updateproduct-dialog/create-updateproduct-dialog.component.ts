@@ -6,6 +6,7 @@ import {
 } from '../../models/products.model';
 import { ProductService } from '../../services/product.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MessagesService } from 'src/app/services/message-service/messages.service';
 
 @Component({
   selector: 'app-create-updateproduct-dialog',
@@ -19,7 +20,8 @@ export class CreateUpdateproductDialogComponent implements OnInit {
   textButton: string = 'Guardar';
   constructor(
     private productService: ProductService,
-    private dialogRef: MatDialogRef<CreateUpdateproductDialogComponent>
+    private dialogRef: MatDialogRef<CreateUpdateproductDialogComponent>,
+    private messageService: MessagesService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +63,7 @@ export class CreateUpdateproductDialogComponent implements OnInit {
         this.requestCreateProduct(data);
       }
     } else {
+      this.messageService.showWarning('Hace falta información requerida');
       formProduct.markAllAsTouched();
     }
   }
@@ -68,7 +71,8 @@ export class CreateUpdateproductDialogComponent implements OnInit {
   requestCreateProduct(body: CreateOrUpdateProductModel){
     this.productService.createProduct(body).subscribe((res) => {
       if (res.statusCode === 200) {
-          this.dialogRef.close();
+          this.dialogRef.close(true);
+          this.messageService.showSuccess(res.friendlyMessage[0]);
       }
     });
   }
@@ -76,7 +80,8 @@ export class CreateUpdateproductDialogComponent implements OnInit {
   requestUpdateProduct(body: CreateOrUpdateProductModel){
     this.productService.updateProduct(body).subscribe((res) => {
       if (res.statusCode === 200) {
-          this.dialogRef.close();
+          this.dialogRef.close(true);
+          this.messageService.showSuccess(res.friendlyMessage[0]);
       }
     });
   }

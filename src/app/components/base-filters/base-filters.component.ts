@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class BaseFiltersComponent implements OnInit {
   @Input() titlePage: string = '';
+  @Input() textButton: string = 'Agregar'
   @Output() onClick = new EventEmitter();
   constructor() { }
 

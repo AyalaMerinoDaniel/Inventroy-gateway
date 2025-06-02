@@ -1,18 +1,18 @@
 <div class="dialog-box">
-    <div class="dialog-title">
-        <div class="text-large text-color-primary text-bold">{{ titleDialog }}</div>
-        <div>
-            <app-icon
-            image="/assets/font-awasome-icons/xmark-solid.svg"
-            color="gray"
-            (click)="close()"
-            ></app-icon>
-        </div>
+  <div class="dialog-title">
+    <div class="text-large text-color-primary text-bold">{{ titleDialog }}</div>
+    <div>
+      <app-icon
+        image="/assets/font-awasome-icons/xmark-solid.svg"
+        color="gray"
+        (click)="close()"
+      ></app-icon>
     </div>
-    <div class="dialog-content">
-        <ng-content select="[content]"></ng-content>
-    </div>
-    <div class="dialog-footer">
-        <ng-content select="[footer]"></ng-content>
-    </div>
+  </div>
+  <div class="dialog-content">
+    <ng-content select="[content]"></ng-content>
+  </div>
+  <div class="dialog-footer">
+    <ng-content select="[footer]"></ng-content>
+  </div>
 </div>

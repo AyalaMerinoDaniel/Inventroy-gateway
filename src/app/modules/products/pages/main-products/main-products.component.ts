@@ -6,6 +6,8 @@ import { ProductLIstModel } from '../../models/products.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUpdateproductDialogComponent } from '../../dialogs/create-updateproduct-dialog/create-updateproduct-dialog.component';
+import { DialogsService } from 'src/app/services/dialogs-service/dialogs.service';
+import { MessagesService } from 'src/app/services/message-service/messages.service';
 
 @Component({
   selector: 'app-main-products',
@@ -18,7 +20,6 @@ export class MainProductsComponent implements OnInit {
 
   limit: number = 10;
   page: number = 1;
-  value: string = "";
   totalItems: number = 0;
 
   listProducts: ProductLIstModel [] = []; 
@@ -35,7 +36,9 @@ export class MainProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private fb: FormBuilder,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private dialogService: DialogsService,
+    private messageService: MessagesService
   ) { 
     this.form = this.fb.group({
       [`${this.keyFormNameProduct}`]: ['']
@@ -93,6 +96,29 @@ showDialogCreateOrUpdateProduct(id?: number){
     disableClose: true
   });
   ref.componentInstance.idProduct = id;
+  ref.afterClosed().subscribe(res=>{
+    if(res){
+     this.onPageChange(1);
+    }
+  });
 }
 
+deleteProduct(product: ProductLIstModel){
+  const message = `¿Estás seguro que desea eliminar el producto ${product.name}?`
+  const ref = this.dialogService.showDialogConfirm('Eliminar Producto', message);
+  ref.afterClosed().subscribe(res=>{
+    if(res){
+      this.requestDeleteProduct(product.id ?? 0)
+    }
+  });
+}
+
+requestDeleteProduct(id: number){
+  this.productService.deleteProduct(id).subscribe(res=>{
+    if(res.statusCode === 200){
+      this.messageService.showSuccess(res.friendlyMessage[0]);
+      this.onPageChange(1);
+    }
+  })
+}
 }

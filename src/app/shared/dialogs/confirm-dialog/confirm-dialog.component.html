@@ -1,0 +1,13 @@
+<app-base-dialog [titleDialog]="titleDialog">
+  <div content>
+    <div class="text text-gray text-center m-3">
+        {{ message }}
+    </div>
+  </div>
+  <div footer>
+    <app-flat-button 
+    [label]="textButton"
+    (click)="close()"
+    ></app-flat-button>
+  </div>
+</app-base-dialog>

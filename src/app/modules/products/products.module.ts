@@ -8,6 +8,7 @@ import { GeneralComponentsModule } from 'src/app/components/general-components.m
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateUpdateproductDialogComponent } from './dialogs/create-updateproduct-dialog/create-updateproduct-dialog.component';
 import { FormCreateUpdateProductComponent } from './components/form-create-update-product/form-create-update-product.component';
+import { DialogsModule } from 'src/app/shared/dialogs/dialogs.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormCreateUpdateProductComponent } from './components/form-create-updat
     MaterialModule,
     GeneralComponentsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogsModule
   ],
   providers: [],
 })

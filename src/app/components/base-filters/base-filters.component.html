@@ -3,7 +3,7 @@
     <div class="text-large text-color-primary text-bold">{{ titlePage }}</div>
     <div>
       <app-flat-button
-        label="Agregar"
+        [label]="textButton"
         color="primary"
         icon="add"
         (click)="created()"
