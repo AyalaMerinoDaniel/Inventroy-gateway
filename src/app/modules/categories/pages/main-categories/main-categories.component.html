@@ -11,6 +11,7 @@
           <app-base-filters 
           [titlePage]="'Filtros'"
           textButton = "Agregar categoría"
+          (onClick)="showDialogCreateUpdateCategory()"
           >
             <div content>
               <form [formGroup]="form">
@@ -71,6 +72,7 @@
                   image="/assets/font-awasome-icons/edit.svg"
                   color="primary-color"
                   matTooltip="Editar categoría"
+                  (click)="showDialogCreateUpdateCategory(element.id)"
                 ></app-icon>
 
                 <app-icon
@@ -78,6 +80,7 @@
                   image="/assets/font-awasome-icons/trash-solid.svg"
                   color="tertiary-color"
                   matTooltip="Eliminar categoría"
+                  (click)="showDialogDeleteCategory(element)"
                 ></app-icon>
               </div>
             </td>
@@ -93,6 +96,7 @@
             [pageSize]="limit"
             [currentPage]="page"
             [maxVisiblePages]="5"
+            (pageChange)="onPageChange($event)"
           >
           </app-paginator>
         </div>

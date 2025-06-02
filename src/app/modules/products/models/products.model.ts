@@ -1,21 +1,21 @@
+import { BaseNamedModel } from "src/app/models/base-models/base-name-model";
 import { CategoryModel } from "src/app/models/category.model";
+import { GenericOption } from "src/app/models/selector/select-request-body.model";
 
-export class ProductLIstModel {
+export class ProductLIstModel extends BaseNamedModel {
   constructor(
-    public id?: number,
-    public name?: string,
-    public description?: string,
     public price?: number,
     public category?: CategoryModel
-  ) {}
+  ) {
+    super()
+  }
 }
 
-export class CreateOrUpdateProductModel {
+export class CreateOrUpdateProductModel extends BaseNamedModel {
   constructor(
-    public id?: number,
-    public name?: string,
-    public description?: string,
     public price?: number,
-    public categoryId?: number
-  ) {}
+    public categoryId?: number | GenericOption
+  ) {
+    super()
+  }
 }

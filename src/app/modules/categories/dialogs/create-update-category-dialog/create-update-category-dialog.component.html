@@ -1,0 +1,11 @@
+<app-base-dialog [titleDialog]="titleDialog">
+  <div content>
+   <app-form-create-update-category
+    #formCategory
+   ></app-form-create-update-category>
+  </div>
+  <div footer>
+    <app-flat-button [label]="textButton" (click)="onSubmitForm()"></app-flat-button>
+  </div>
+</app-base-dialog>
+

@@ -1,7 +1,8 @@
-export class CategoryModel {
+import { BaseNamedModel } from "./base-models/base-name-model";
+
+export class CategoryModel extends BaseNamedModel{
   constructor(
-    public id: number,
-    public name: string,
-    public description: string
-  ) {}
+  ) {
+    super()
+  }
 }

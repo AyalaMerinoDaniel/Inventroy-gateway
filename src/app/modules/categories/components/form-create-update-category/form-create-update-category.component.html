@@ -1,0 +1,22 @@
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col">
+            <app-input-form
+             [form]="form"
+             [controlName]="keyFormName"
+             label="Nombre de la categoría"
+             placeholder="Nombre de la categoría"
+            ></app-input-form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <app-input-form
+             [form]="form"
+             [controlName]="keyFormDescription"
+             label="Descripción"
+             placeholder="Descripción"
+            ></app-input-form>
+        </div>
+    </div>
+</form>

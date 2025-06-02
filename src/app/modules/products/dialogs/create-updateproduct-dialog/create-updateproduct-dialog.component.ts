@@ -7,6 +7,10 @@ import {
 import { ProductService } from '../../services/product.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MessagesService } from 'src/app/services/message-service/messages.service';
+import { GenericOption } from 'src/app/models/selector/select-request-body.model';
+import { GENERAL_MESSAGES } from 'src/app/shared/constants/message.constants';
+import { ResponseApi } from 'src/app/models/response.model';
+import { ResponseTypeEnum } from 'src/app/enums/response-type';
 
 @Component({
   selector: 'app-create-updateproduct-dialog',
@@ -35,14 +39,14 @@ export class CreateUpdateproductDialogComponent implements OnInit {
     }
   }
 
-  mapProductToFormData(product: ProductLIstModel) {
+  mapProductToFormData(product: ProductLIstModel): CreateOrUpdateProductModel {
   return {
     name: product.name,
     description: product.description,
     price: product.price,
     categoryId: product.category
-      ? { id: product.category.id, value: product.category.name }
-      : null,
+      ? new GenericOption(product.category.id!, product.category.name)
+      : undefined,
   };
 }
   setFormDetails(data: ProductLIstModel) {
@@ -63,26 +67,27 @@ export class CreateUpdateproductDialogComponent implements OnInit {
         this.requestCreateProduct(data);
       }
     } else {
-      this.messageService.showWarning('Hace falta información requerida');
+      this.messageService.showWarning(GENERAL_MESSAGES.INFORMATION_REQUIRED);
       formProduct.markAllAsTouched();
     }
   }
 
   requestCreateProduct(body: CreateOrUpdateProductModel){
     this.productService.createProduct(body).subscribe((res) => {
-      if (res.statusCode === 200) {
-          this.dialogRef.close(true);
-          this.messageService.showSuccess(res.friendlyMessage[0]);
-      }
+      this.responseData(res);
     });
   }
 
   requestUpdateProduct(body: CreateOrUpdateProductModel){
     this.productService.updateProduct(body).subscribe((res) => {
-      if (res.statusCode === 200) {
-          this.dialogRef.close(true);
-          this.messageService.showSuccess(res.friendlyMessage[0]);
-      }
+      this.responseData(res);
     });
+  }
+
+  responseData(res: ResponseApi){
+    if(res.statusCode === ResponseTypeEnum.OK){
+      this.messageService.showSuccess(res.friendlyMessage[0]);
+      this.dialogRef.close(true);
+    }
   }
 }

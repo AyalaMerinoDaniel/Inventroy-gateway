@@ -10,7 +10,11 @@ export enum EndpointsPaths {
 
   //categories
   category = '/category',
-  categorySelector = '/category/selector'
+  categorySelector = '/category/selector',
+  categoryCreate = '/category/create',
+  categoryUpdate = '/category/update',
+  getCategoryById = '/category/{id}',
+  categoryDeleteId = '/category/delete/{id}'
 }
 
 export const endpointList: EndpointModel[] = [
@@ -42,7 +46,6 @@ export const endpointList: EndpointModel[] = [
   },
 
 
-
   //categories
   {
     endpoint: EndpointsPaths.category,
@@ -53,6 +56,26 @@ export const endpointList: EndpointModel[] = [
     endpoint: EndpointsPaths.categorySelector,
     environment: environment.apiUrl,
     variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.categoryCreate,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.categoryUpdate,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.getCategoryById,
+    environment: environment.apiUrl,
+    variable: ['{id}'],
+  },
+  {
+    endpoint: EndpointsPaths.categoryDeleteId,
+    environment: environment.apiUrl,
+    variable: ['{id}'],
   },
   
   

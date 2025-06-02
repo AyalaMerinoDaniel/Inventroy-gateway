@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { GetListBaseModel } from 'src/app/models/get-list-base.model';
+import { GetListBaseModel } from 'src/app/models/base-models/get-list-base.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductLIstModel } from '../../models/products.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
