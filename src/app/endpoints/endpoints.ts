@@ -17,7 +17,8 @@ export enum EndpointsPaths {
   categoryDeleteId = '/category/delete/{id}',
 
   //auth
-  authRefresh = '/auth/refresh'
+  authRefresh = '/auth/refresh',
+  authLogin = '/auth/login',
 }
 
 export const endpointList: EndpointModel[] = [
@@ -87,7 +88,11 @@ export const endpointList: EndpointModel[] = [
     environment: environment.apiUrl,
     variable: [],
   },
-  
+  {
+    endpoint: EndpointsPaths.authLogin,
+    environment: environment.apiUrl,
+    variable: [],
+  },
   
 ];
 

@@ -16,8 +16,15 @@
 
 mat-drawer-container {
   flex: 1 1 auto;
-  height: calc(100vh - 65px) !important;
   overflow: hidden !important;
+}
+
+mat-drawer-container.full-height {
+  height: 100vh !important;
+}
+
+mat-drawer-container.with-toolbar {
+  height: calc(100vh - 65px) !important;
 }
 
 mat-drawer.closed {
@@ -48,5 +55,16 @@ mat-drawer.closed {
   overflow: hidden !important;
   transition: all 0.3s ease;
   padding: 16px;
+}
+
+.content-toolbar {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.no-padding {
+  padding: 0px;
 }
 

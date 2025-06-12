@@ -37,6 +37,12 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
+          const isLoginRequest = req.url.includes('/auth/login');
+
+          if (isLoginRequest) {
+            this.messageService.showError('Credenciales inválidas');
+            return throwError(() => error);
+          }
           return this.handleUnauthorized(req, next);
         }
         if (error.status === 500) {
@@ -57,6 +63,11 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    if (!this.authService.getRefreshToken()) {
+      this.authService.logout();
+      this.messageService.showError('Por favor inicie sesión.')
+    }
+
     if (!this.isRefreshingToken) {
       this.isRefreshingToken = true;
       this.tokenSubject.next(null);
@@ -70,7 +81,8 @@ export class AuthInterceptor implements HttpInterceptor {
             this.authService.setTokens(newToken, newRefreshToken)
             return next.handle(this.addToken(req, newToken));
           }
-
+          
+          this.messageService.showError('Tu sesión ha expirado. Por favor inicia sesión nuevamente.');
           this.authService.logout();
           return throwError(() => 'Token expired');
         }),

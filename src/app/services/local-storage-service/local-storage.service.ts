@@ -8,9 +8,9 @@ export class LocalStorageService {
 
   constructor() { }
 
-  getData<T>(key: LocalStorageKeys): T | null {
+  getData<T>(key: LocalStorageKeys): T | undefined {
     const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : null;
+    return raw ? JSON.parse(raw) : undefined;
   }
 
   setData<T>(key: LocalStorageKeys, data: T){
