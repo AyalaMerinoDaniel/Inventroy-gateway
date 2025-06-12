@@ -16,6 +16,10 @@ export class MessagesService {
     this.showSnackBar(message, 'warning')
   }
 
+  showError(message: string) {
+    this.showSnackBar(message, 'error')
+  }
+
   showSnackBar(message: string, type: string ,duration: number = 5000){
     this.snackBar.open(message, 'Cerrar', {
       duration,

@@ -14,7 +14,10 @@ export enum EndpointsPaths {
   categoryCreate = '/category/create',
   categoryUpdate = '/category/update',
   getCategoryById = '/category/{id}',
-  categoryDeleteId = '/category/delete/{id}'
+  categoryDeleteId = '/category/delete/{id}',
+
+  //auth
+  authRefresh = '/auth/refresh'
 }
 
 export const endpointList: EndpointModel[] = [
@@ -76,6 +79,13 @@ export const endpointList: EndpointModel[] = [
     endpoint: EndpointsPaths.categoryDeleteId,
     environment: environment.apiUrl,
     variable: ['{id}'],
+  },
+
+  //Auth
+  {
+    endpoint: EndpointsPaths.authRefresh,
+    environment: environment.apiUrl,
+    variable: [],
   },
   
   

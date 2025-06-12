@@ -1,0 +1,44 @@
+<div class="login-page">
+  <div class="container-login">
+    <div class="login-left">
+      <div class="text-center">
+        <div class="text-big text-bold">Bienvenido</div>
+        <div class="text-small">Tu tienda favorita en un solo lugar</div>
+      </div>
+    </div>
+
+    <div class="login-right">
+      <div class="card card-login mat-elevation-z3">
+        <div class="text-color-primary text-large text-bold">
+          Iniciar sesión
+        </div>
+        <form [formGroup]="form" class="mt-3">
+          <div class="row">
+            <div class="col">
+              <app-input-form
+                [form]="form"
+                [controlName]="keyFormEmail"
+                label="Correo electronico"
+                placeholder="Correo electronico"
+              ></app-input-form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <app-input-form
+                [form]="form"
+                [controlName]="keyFormPassword"
+                type="password"
+                label="Contraseña"
+                placeholder="Contraseña"
+              ></app-input-form>
+            </div>
+          </div>
+        </form>
+        <div class="w-100 mt-1">
+          <app-flat-button label="Entrar"></app-flat-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
