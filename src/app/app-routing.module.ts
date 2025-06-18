@@ -4,13 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'welcome',
+    redirectTo: 'inventory/welcome',
     pathMatch: 'full',
-  },
-  {
-    path: 'welcome',
-    loadChildren: () =>
-      import('./modules/home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'login',
@@ -18,21 +13,35 @@ const routes: Routes = [
       import('./modules/login/login.module').then(m => m.LoginModule),
   },
   {
-    path: 'products',
-    loadChildren: () =>
-      import('./modules/products/products.module').then(m => m.ProductsModule),
-  },
-  {
-    path: 'categories',
-    loadChildren: () =>
-      import('./modules/categories/categories.module').then(m => m.CategoriesModule),
+    path: 'inventory',
+    children: [
+      {
+        path: 'welcome',
+        loadChildren: () =>
+          import('./modules/home/home.module').then(m => m.HomeModule),
+      },
+      {
+        path: 'products',
+        loadChildren: () =>
+          import('./modules/products/products.module').then(m => m.ProductsModule),
+      },
+      {
+        path: 'categories',
+        loadChildren: () =>
+          import('./modules/categories/categories.module').then(m => m.CategoriesModule),
+      },
+      {
+        path: '',
+        redirectTo: 'welcome',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '**',
-    redirectTo: 'welcome',
-  }
+    redirectTo: 'inventory/welcome',
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

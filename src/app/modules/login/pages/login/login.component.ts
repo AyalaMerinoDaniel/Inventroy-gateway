@@ -55,6 +55,6 @@ export class LoginComponent implements OnInit {
   proccessReponse(data: ResponseLoginModel){
     this.authService.setTokens(data.token, data.refreshToken);
     this.authService.setUser(data.user);
-    this.router.navigate(['/welcome'])
+    this.router.navigate(['/inventory/welcome'])
   }
 }
