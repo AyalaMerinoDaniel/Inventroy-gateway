@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class StatusUserTypePipe implements PipeTransform {
 
   transform(value: string | null): string {
-    console.log(value)
     if(value){
       return 'user-disable'
     }else{
