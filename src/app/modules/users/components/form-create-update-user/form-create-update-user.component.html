@@ -1,0 +1,51 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <app-input-form
+        [form]="form"
+        [controlName]="keyFormName"
+        label="Nombre del usuario"
+        placeholder="Nombre de la categoría"
+      ></app-input-form>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <app-input-form
+        [form]="form"
+        [controlName]="keyFormEmail"
+        label="Correo electronico"
+        placeholder="Correo electronico"
+      ></app-input-form>
+    </div>
+  </div>
+  <div *ngIf="!idUser" class="row">
+    <div class="col-sm-12 col-md-6">
+      <app-input-form
+        [form]="form"
+        [controlName]="keyFormPassword"
+        label="Contraseña"
+        placeholder="Contraseña"
+        type="password"
+      ></app-input-form>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <app-input-form
+        [form]="form"
+        [controlName]="keyFormConfirmPassord"
+        label="Confirmar contraseña"
+        placeholder="Confirmar contraseña"
+        type="password"
+        [validationMessages]="validationMessages"
+      ></app-input-form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <app-selector
+        [form]="form"
+        [controlName]="keyFormRole"
+        [label]="'Tipo de usuario'"
+        [localList]="userTypeList"
+      ></app-selector>
+    </div>
+  </div>
+</form>

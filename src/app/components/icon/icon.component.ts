@@ -22,7 +22,6 @@ export class IconComponent implements OnInit {
     | 'white'
     | 'black'
     | 'tertiary-color'
-    | 'green'
     | 'success'
     | 'warning'
     | 'error'
@@ -36,7 +35,7 @@ export class IconComponent implements OnInit {
     | 'white'
     | 'black'
     | 'tertiary-color'
-    | 'green'
+
     | 'success'
     | 'warning'
     | 'error'
@@ -186,10 +185,7 @@ export class IconComponent implements OnInit {
         this.directColor = 'var(--tertiary-color)';
         break;
       case 'white':
-        this.directColor = 'white';  // estándar CSS, funciona sin var()
-        break;
-      case 'green':
-        this.directColor = 'var(--button-green)';
+        this.directColor = 'white';
         break;
       case 'tertiary-color':
         this.directColor = 'var(--tertiary-color)';
@@ -210,7 +206,7 @@ export class IconComponent implements OnInit {
         this.directColor = 'var(--toast-info)';
         break;
       default:
-        this.directColor = this.color || 'black';
+        this.directColor =  `var(--${this.color})` || 'black';
     }
   }
   
@@ -231,9 +227,6 @@ export class IconComponent implements OnInit {
         break;
       case 'white':
         this.directColor = 'white';
-        break;
-      case 'green':
-        this.directColor = 'button-green'
         break;
       case 'tertiary-color':
         this.directColor = 'var(--tertiary-color)';

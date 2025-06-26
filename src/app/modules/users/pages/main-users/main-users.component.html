@@ -1,0 +1,157 @@
+<div class="content-users">
+  <div class="card mat-elevation-z3">
+    <div class="body-card">
+      <div class="title-card">
+        <div class="row">
+          <div class="col">LISTA DE USUARIOS</div>
+        </div>
+      </div>
+      <div class="content-card p-3">
+        <app-base-filters
+          [titlePage]="'Filtros'"
+          textButton="Agregar usuario"
+          (onClick)="showDialogCreateUser()"
+        >
+          <div content>
+            <form [formGroup]="form" class="row">
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <app-input-form
+                  [form]="form"
+                  [controlName]="keyFormName"
+                  [label]="'Nombre del usuario'"
+                  [placeholder]="'Nombre del usuario'"
+                ></app-input-form>
+              </div>
+
+              <div class="col-sm-12 col-md-4 col-lg-4">
+                <app-selector
+                  [form]="form"
+                  [controlName]="keyFormUserType"
+                  [label]="'Tipo de usuario'"
+                  [localList]="userTypeList"
+                ></app-selector>
+              </div>
+
+              <div class="col-sm-12 col-md-4 col-lg-4 mt-3">
+                <mat-radio-group [formControlName]="keyFormStatus">
+                  <mat-radio-button
+                    class="ms-2"
+                    *ngFor="let option of userStatusList"
+                    [value]="option.id"
+                  >
+                    {{ option.value }}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </form>
+          </div>
+
+          <div footer>
+            <div class="d-flex">
+              <app-stroked-button
+                label="Limpiar"
+                class="me-2"
+                (click)="resetForm()"
+              ></app-stroked-button>
+              <app-flat-button
+                label="Buscar"
+                (click)="getListUsers()"
+              ></app-flat-button>
+            </div>
+          </div>
+        </app-base-filters>
+        <div class="mt-2">
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="mat-elevation-z8 mb-3"
+          >
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Estatus</th>
+              <td mat-cell *matCellDef="let element">
+                <div [ngClass]="element.deletedAt | statusUserType"></div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef>Id</th>
+              <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Nombre</th>
+              <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef>Correo electronico</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.email }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="userType">
+              <th mat-header-cell *matHeaderCellDef>Tipo de usuario</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.role | nameTypeUser }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let element">
+                <div class="d-flex">
+                  <app-icon
+                    checkPermission [role]="rolAdmin"
+                    class="pointer"
+                    image="/assets/font-awasome-icons/triangle-exclamation-solid.svg"
+                    [color]="element.deletedAt ? 'error' : 'success'"
+                    [matTooltip]="
+                      element.deletedAt ? 'Habilitar' : 'Deshabilitar'
+                    "
+                    (click)="
+                      element.deletedAt
+                        ? enableUser(element.id)
+                        : disableUser(element.id)
+                    "
+                  ></app-icon>
+
+                  <app-icon
+                    class="pointer ms-2"
+                    image="/assets/font-awasome-icons/edit.svg"
+                    color="primary-color"
+                    matTooltip="Editar usuario"
+                    (click)="showDialogUpdateUser(element.id)"
+                  ></app-icon>
+
+                    <app-icon
+                      checkPermission [role]="rolAdmin"
+                      class="pointer ms-2"
+                      image="/assets/font-awasome-icons/lock-solid.svg"
+                      color="primary-color"
+                      matTooltip="Cambiar contraseña"
+                      (click)="showDialogChangePassword(element)"
+                    ></app-icon>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+
+          <div class="content-end">
+            <app-paginator
+              [totalItems]="totalItems"
+              [pageSize]="limit"
+              [currentPage]="page"
+              [maxVisiblePages]="5"
+              (pageChange)="onPageChange($event)"
+            >
+            </app-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

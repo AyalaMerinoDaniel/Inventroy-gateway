@@ -1,7 +1,7 @@
 export class GetListBaseModel{
     constructor(
-        public limit: number,
-        public offset: number,
-        public value: string
+        public limit?: number,
+        public offset?: number,
+        public value?: string
     ){}
 }

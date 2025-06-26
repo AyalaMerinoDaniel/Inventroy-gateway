@@ -1,0 +1,11 @@
+<app-base-dialog [titleDialog]="titleDialog">
+  <div content>
+   <app-form-create-update-user
+    #formUser
+    [idUser]="id"
+   ></app-form-create-update-user>
+  </div>
+  <div footer>
+    <app-flat-button [label]="textButton" (click)="onSubmitForm()"></app-flat-button>
+  </div>
+</app-base-dialog>

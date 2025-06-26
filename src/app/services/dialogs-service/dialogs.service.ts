@@ -13,7 +13,7 @@ export class DialogsService {
   showDialogConfirm(title: string, message: string){
     const ref = this.matDialog.open(ConfirmDialogComponent, {
       width: '40%',
-      height: '40%',
+      height: 'auto',
       disableClose: true
     });
     ref.componentInstance.titleDialog = title;

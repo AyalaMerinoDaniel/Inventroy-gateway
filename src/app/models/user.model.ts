@@ -4,6 +4,7 @@ export class UserModel {
     public name: string,
     public email: string,
     public role: string,
-    public deletetAt: Date
+    public password?: string,
+    public deletetAt?: Date
   ) {}
 }

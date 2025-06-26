@@ -33,11 +33,13 @@ body {
   --white: #ffffff;
   --black: #000000;
   --warning: #fcd600;
-  --background-support-button: #3022771a;
   --toast-success: #008001;
   --toast-warning: #ff7518;
   --toast-error: #ff0000;
   --toast-info: #2d68c4;
+  --menu-products: #0093ad;
+  --menu-categories: #4b5563;
+  --menu-users: #fb8500;
 }
 
 .text-color-primary {
@@ -46,6 +48,10 @@ body {
 
 .text-gray {
   color: var(--gray-45);
+}
+
+.text-white {
+  color: var(--white);
 }
 
 .text-bold {

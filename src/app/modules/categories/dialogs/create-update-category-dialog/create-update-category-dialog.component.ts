@@ -7,6 +7,7 @@ import { CategoryModel } from 'src/app/models/category.model';
 import { ResponseApi } from 'src/app/models/response.model';
 import { ResponseTypeEnum } from 'src/app/enums/response-type';
 import { GENERAL_MESSAGES } from 'src/app/shared/constants/message.constants';
+import { DialogsService } from 'src/app/services/dialogs-service/dialogs.service';
 
 @Component({
   selector: 'app-create-update-category-dialog',
@@ -61,13 +62,13 @@ export class CreateUpdateCategoryDialogComponent implements OnInit {
   createCategory(body: CategoryModel){
     this.categoriesService.createCategory(body).subscribe(res=>{
       this.responseData(res);
-    }) 
+    }); 
   }
 
   updateCategory(body: CategoryModel){
     this.categoriesService.updateCategory(body).subscribe(res=>{
       this.responseData(res);
-    }) 
+    }); 
   }
 
   responseData(res: ResponseApi){

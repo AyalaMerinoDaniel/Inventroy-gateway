@@ -17,6 +17,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { PermissionDirective } from './directives/permission/permission.directive';
 
 @NgModule({
   imports: [
@@ -37,6 +39,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatAutocompleteModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatRadioModule
   ],
   exports: [
     MatToolbarModule,
@@ -55,9 +58,12 @@ import { MatMenuModule } from '@angular/material/menu';
     MatProgressSpinnerModule,
     MatAutocompleteModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatRadioModule,
+    PermissionDirective
   ],
   declarations: [
+    PermissionDirective
   ]
 })
 export class MaterialModule {}

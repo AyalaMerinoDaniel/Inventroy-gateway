@@ -45,28 +45,34 @@ export class SelectorComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private selectorService: SelectorService) {}
 
   ngOnInit(): void {
-    if (this.localList) {
-      this.options = this.localList;
-      return;
-    }
-    this.listenForChanges();
+  if (this.localList) {
+    this.options = this.localList;
+  } else {
     this.loadOptions().subscribe();
-
-    this.searchControl.valueChanges
-      .pipe(
-        debounceTime(300),
-        switchMap((value: any) => {
-          if (typeof value === 'object' && value !== null) {
-            return of();
-          }
-
-          this.currentQuery = value || '';
-          this.resetSearch();
-          return this.loadOptions();
-        })
-      )
-      .subscribe();
   }
+
+  this.searchControl.valueChanges.pipe(
+    debounceTime(300),
+    tap((value: any) => {
+      if (typeof value === 'object') return;
+      this.handleSearch(value);
+    })
+  ).subscribe();
+
+  this.listenForChanges();
+}
+
+handleSearch(value: string): void {
+  if (this.localList) {
+    this.options = this.localList.filter(opt =>
+      opt.value?.toLowerCase().includes(value.toLowerCase())
+    );
+  } else {
+    this.currentQuery = value || '';
+    this.resetSearch();
+    this.loadOptions().subscribe();
+  }
+}
 
   listenForChanges() {
     this.subs = this.form
@@ -77,11 +83,22 @@ export class SelectorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   proccessNewValueAutoSelect(newValue: any) {
-    if (typeof newValue === 'object') {
-      this.searchControl.setValue(newValue ?? null);
-      this.setItemToForm();
+    if (typeof newValue === 'object' && newValue !== null) {
+      this.searchControl.setValue(newValue);
+      this.setItemToForm()
+    } else {
+      this.cleanField(newValue);
     }
   }
+
+  cleanField(newValue: any){
+    if(newValue === '' || newValue === null || newValue === undefined){
+      this.searchControl.setValue("");
+      this.selectedItem = undefined;
+      this.onItemSelected.emit(undefined);
+    }
+  }
+
 
   ngAfterViewInit(): void {
     if (this.matAutocomplete) {

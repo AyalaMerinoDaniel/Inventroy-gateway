@@ -19,6 +19,15 @@ export enum EndpointsPaths {
   //auth
   authRefresh = '/auth/refresh',
   authLogin = '/auth/login',
+
+  //users
+  usersAll = '/users/all',
+  usersCreate = '/users/create',
+  getUserById = '/users/{id}',
+  usersUpdate = '/users/update',
+  usersdisableId = '/users/disable/{id}',
+  usersEnableId = '/users/enable/{id}',
+  usersPasswordChange = '/users/password-change'
 }
 
 export const endpointList: EndpointModel[] = [
@@ -93,6 +102,46 @@ export const endpointList: EndpointModel[] = [
     environment: environment.apiUrl,
     variable: [],
   },
+
+  //users
+  {
+    endpoint: EndpointsPaths.usersAll,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.usersCreate,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.getUserById,
+    environment: environment.apiUrl,
+    variable: ['{id}'],
+  },
+  {
+    endpoint: EndpointsPaths.usersUpdate,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.usersdisableId,
+    environment: environment.apiUrl,
+    variable: ['{id}'],
+  },
+
+  {
+    endpoint: EndpointsPaths.usersEnableId,
+    environment: environment.apiUrl,
+    variable: ['{id}'],
+  },
+  {
+    endpoint: EndpointsPaths.usersPasswordChange,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+
+  
   
 ];
 

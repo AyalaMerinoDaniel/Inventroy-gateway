@@ -46,13 +46,19 @@ export class AppComponent implements OnInit {
         icon: '/assets/font-awasome-icons/boxes-stacked-solid.svg',
         name: 'Productos',
         route: '/inventory/products',
-        color: 'tertiary-color',
+        color: 'menu-products',
       },
       {
         icon: '/assets/font-awasome-icons/tags-solid.svg',
         name: 'Categorias',
         route: '/inventory/categories',
-        color: 'gray',
+        color: 'menu-categories',
+      },
+      {
+        icon: '/assets/font-awasome-icons/user-solid.svg',
+        name: 'Usuarios',
+        route: '/inventory/users',
+        color: 'menu-users',
       },
     ];
   }

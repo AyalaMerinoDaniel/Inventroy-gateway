@@ -48,6 +48,10 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error.status === 500) {
           this.messageService.showError('Error en el sistema, consulta con el administrador.')
         }
+        if (error.status === 400) {
+          const messages = error.error.friendlyMessage;
+          this.messageService.showWarning(messages.join('; '));
+        }
         return throwError(() => error);
       })
     );

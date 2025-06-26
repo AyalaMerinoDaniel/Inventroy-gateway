@@ -8,7 +8,7 @@ export class SelectRequestBodyModel {
 
 export class GenericOption {
     constructor(
-    public id: number,
+    public id: number | string,
     public value?: string,
   ) {}
 }
