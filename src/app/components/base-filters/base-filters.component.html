@@ -1,7 +1,7 @@
 <div class="card">
   <div class="title-base-filter p-2">
     <div class="text-large text-color-primary text-bold">{{ titlePage }}</div>
-    <div>
+    <div checkPermission [role]="role">
       <app-flat-button
         [label]="textButton"
         color="primary"

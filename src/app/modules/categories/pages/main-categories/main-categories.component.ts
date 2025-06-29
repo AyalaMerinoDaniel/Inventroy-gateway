@@ -9,6 +9,7 @@ import { CreateUpdateCategoryDialogComponent } from '../../dialogs/create-update
 import { DialogsService } from 'src/app/services/dialogs-service/dialogs.service';
 import { MessagesService } from 'src/app/services/message-service/messages.service';
 import { ResponseTypeEnum } from 'src/app/enums/response-type';
+import { UserTypeEnum } from 'src/app/enums/generals.enum';
 
 @Component({
   selector: 'app-main-categories',
@@ -32,6 +33,13 @@ export class MainCategoriesComponent implements OnInit {
 
   listCategories: CategoryModel [] = []; 
   dataSource = new MatTableDataSource<CategoryModel>();
+
+  rolAdmin = UserTypeEnum.ADMIN;
+  
+  roles: string[] = [
+    this.rolAdmin,
+    UserTypeEnum.USER
+  ];
   
   constructor(
     private fb: FormBuilder,

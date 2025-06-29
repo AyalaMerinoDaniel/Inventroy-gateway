@@ -9,6 +9,7 @@ import { CreateUpdateproductDialogComponent } from '../../dialogs/create-updatep
 import { DialogsService } from 'src/app/services/dialogs-service/dialogs.service';
 import { MessagesService } from 'src/app/services/message-service/messages.service';
 import { ResponseTypeEnum } from 'src/app/enums/response-type';
+import { UserTypeEnum } from 'src/app/enums/generals.enum';
 
 @Component({
   selector: 'app-main-products',
@@ -33,6 +34,13 @@ export class MainProductsComponent implements OnInit {
     'category',
     'actions'
   ];
+
+  rolAdmin = UserTypeEnum.ADMIN;
+
+  roles: string[] = [
+    this.rolAdmin,
+    UserTypeEnum.USER
+  ]
   
   constructor(
     private productService: ProductService,

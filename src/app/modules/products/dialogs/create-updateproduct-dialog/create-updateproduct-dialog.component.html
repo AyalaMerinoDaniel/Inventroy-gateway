@@ -5,9 +5,11 @@
     ></app-form-create-update-product>
   </div>
   <div footer>
-    <app-flat-button 
-    [label]="textButton"
-    (click)="saveProduct()"
-    ></app-flat-button>
+    <div checkPermission [role]="rolAdmin">
+      <app-flat-button
+        [label]="textButton"
+        (click)="saveProduct()"
+      ></app-flat-button>
+    </div>
   </div>
 </app-base-dialog>

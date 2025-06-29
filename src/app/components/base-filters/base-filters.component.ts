@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserTypeEnum } from 'src/app/enums/generals.enum';
 
 @Component({
   selector: 'app-base-filters',
@@ -8,6 +9,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class BaseFiltersComponent implements OnInit {
   @Input() titlePage: string = '';
   @Input() textButton: string = 'Agregar'
+  @Input() role: string[] = [UserTypeEnum.ADMIN];
+
   @Output() onClick = new EventEmitter();
   constructor() { }
 

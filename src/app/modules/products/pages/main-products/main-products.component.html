@@ -12,6 +12,7 @@
             [titlePage]="'Filtros'"
             textButton = "Agregar producto"
             (onClick)="showDialogCreateOrUpdateProduct()"
+            [role]="roles"
           >
             <div content>
               <form [formGroup]="form">
@@ -91,6 +92,7 @@
                 ></app-icon>
 
                 <app-icon
+                  checkPermission [role]="rolAdmin"
                   class="pointer ms-2"
                   image="/assets/font-awasome-icons/trash-solid.svg"
                   color="tertiary-color"

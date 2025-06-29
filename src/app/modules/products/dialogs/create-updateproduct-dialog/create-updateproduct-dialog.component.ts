@@ -11,6 +11,8 @@ import { GenericOption } from 'src/app/models/selector/select-request-body.model
 import { GENERAL_MESSAGES } from 'src/app/shared/constants/message.constants';
 import { ResponseApi } from 'src/app/models/response.model';
 import { ResponseTypeEnum } from 'src/app/enums/response-type';
+import { UserTypeEnum } from 'src/app/enums/generals.enum';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-create-updateproduct-dialog',
@@ -22,10 +24,14 @@ export class CreateUpdateproductDialogComponent implements OnInit {
   idProduct?: number;
   titleDialog: string = 'Crear Producto'
   textButton: string = 'Guardar';
+
+  rolAdmin = UserTypeEnum.ADMIN;
+  
   constructor(
     private productService: ProductService,
     private dialogRef: MatDialogRef<CreateUpdateproductDialogComponent>,
-    private messageService: MessagesService
+    private messageService: MessagesService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -34,10 +40,23 @@ export class CreateUpdateproductDialogComponent implements OnInit {
         if (res.statusCode === 200) {
           const data: ProductLIstModel = res.result;
           this.setFormDetails(data);
+          this.disableFieldToPermissions();
         }
       });
     }
   }
+
+  disableFieldToPermissions(){
+    const userRole = this.authService.getUser()?.role;
+    const form = this.form.formProduct;
+    if(userRole !== this.rolAdmin){
+      form.get(this.form.keyFormName)?.disable();
+      form.get(this.form.keyFormdescription)?.disable();
+      form.get(this.form.keyFormCategoryId)?.disable();
+      form.get(this.form.keyFormPrice)?.disable()
+    }
+  }
+
 
   mapProductToFormData(product: ProductLIstModel): CreateOrUpdateProductModel {
   return {

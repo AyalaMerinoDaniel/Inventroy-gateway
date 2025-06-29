@@ -8,6 +8,8 @@ import { ResponseApi } from 'src/app/models/response.model';
 import { ResponseTypeEnum } from 'src/app/enums/response-type';
 import { GENERAL_MESSAGES } from 'src/app/shared/constants/message.constants';
 import { DialogsService } from 'src/app/services/dialogs-service/dialogs.service';
+import { UserTypeEnum } from 'src/app/enums/generals.enum';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-create-update-category-dialog',
@@ -20,10 +22,14 @@ export class CreateUpdateCategoryDialogComponent implements OnInit {
   titleDialog: string = 'Crear categoría'
   textButton: string = 'Guardar'
   idCategory?: number;
+
+  rolAdmin = UserTypeEnum.ADMIN;
+
   constructor(
     private dialogRef: MatDialogRef<CreateUpdateCategoryDialogComponent>,
     private messagesService: MessagesService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +38,7 @@ export class CreateUpdateCategoryDialogComponent implements OnInit {
         if(res.statusCode === ResponseTypeEnum.OK){
           const category: CategoryModel = res.result;
           this.setDetailToForm(category);
+          this.disableFieldToPermissions();
         }
       });
     }
@@ -41,6 +48,15 @@ export class CreateUpdateCategoryDialogComponent implements OnInit {
     this.formCategoryComponent.form.patchValue(data);
     this.titleDialog = 'Actualizar categoría';
     this.textButton = 'Actualizar';
+  }
+
+  disableFieldToPermissions(){
+    const userRole = this.authService.getUser()?.role;
+    const form = this.formCategoryComponent.form;
+    if(userRole !== this.rolAdmin){
+      form.get(this.formCategoryComponent.keyFormDescription)?.disable();
+      form.get(this.formCategoryComponent.keyFormName)?.disable();
+    }
   }
 
   onSubmitForm(){

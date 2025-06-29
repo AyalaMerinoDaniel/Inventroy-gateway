@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
   selector: '[checkPermission]'
 })
 export class PermissionDirective {
-  @Input() role: string = '';
+  @Input() role?: string | string[];
 
   constructor(
     private el: ElementRef,
@@ -14,7 +14,12 @@ export class PermissionDirective {
 
   ngOnInit(): void {
     const userRole = this.authService.getUser()?.role;
-    if (userRole !== this.role) {
+
+    const roles = Array.isArray(this.role) ? this.role : [this.role];
+
+    const hasPermission = roles.includes(userRole);
+
+    if (!hasPermission) {
       this.el.nativeElement.style.display = 'none';
     }
   } 

@@ -5,7 +5,9 @@
    ></app-form-create-update-category>
   </div>
   <div footer>
-    <app-flat-button [label]="textButton" (click)="onSubmitForm()"></app-flat-button>
+    <div checkPermission [role]="rolAdmin">
+      <app-flat-button [label]="textButton" (click)="onSubmitForm()"></app-flat-button>
+    </div>
   </div>
 </app-base-dialog>
 
