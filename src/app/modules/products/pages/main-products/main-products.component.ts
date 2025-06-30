@@ -32,6 +32,7 @@ export class MainProductsComponent implements OnInit {
     'description', 
     'price',
     'category',
+    'stock',
     'actions'
   ];
 

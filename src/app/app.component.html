@@ -58,6 +58,7 @@
                 rla.isActive ? '1px solid var(--' + item.color + ')' : ''
               "
               [style.border-radius]="rla.isActive ? '10px' : ''"
+              [matTooltip]="isDrawerOpen ? '' : item.name"
             >
               <div
                 class="icon rounded"

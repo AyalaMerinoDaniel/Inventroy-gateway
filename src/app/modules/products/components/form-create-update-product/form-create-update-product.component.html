@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
+    <div class="col-sm-12 col-md-12">
       <app-input-form
         [form]="formProduct"
         [controlName]="keyFormdescription"
@@ -18,13 +18,24 @@
         [placeholder]="'Descripción'"
       ></app-input-form>
     </div>
-    <div class="col-6">
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
       <app-input-form
         [form]="formProduct"
         [controlName]="keyFormPrice"
         type="number"
         [label]="'Precio'"
         [placeholder]="'Precio'"
+      ></app-input-form>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <app-input-form
+        [form]="formProduct"
+        [controlName]="keyFormStock"
+        type="number"
+        [label]="'Cantidad'"
+        [placeholder]="'Cantidad'"
       ></app-input-form>
     </div>
   </div>

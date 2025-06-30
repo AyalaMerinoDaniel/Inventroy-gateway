@@ -14,6 +14,7 @@ export class FormCreateUpdateProductComponent implements OnInit {
   keyFormdescription = 'description';
   keyFormPrice = 'price';
   keyFormCategoryId = 'categoryId';
+  keyFormStock = 'stock';
 
   endpoint = getFullEndpoint(EndpointsPaths.categorySelector);
 
@@ -23,6 +24,7 @@ export class FormCreateUpdateProductComponent implements OnInit {
       [`${this.keyFormdescription}`]: new FormControl('',Validators.required),
       [`${this.keyFormPrice}`]: new FormControl(null, Validators.required),
       [`${this.keyFormCategoryId}`]: new FormControl('',Validators.required),
+      [`${this.keyFormStock}`]: new FormControl('',Validators.required),
     })
    }
 
