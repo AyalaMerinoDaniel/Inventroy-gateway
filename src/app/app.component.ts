@@ -60,6 +60,12 @@ export class AppComponent implements OnInit {
         route: '/inventory/users',
         color: 'menu-users',
       },
+      {
+        icon: '/assets/font-awasome-icons/cart-shopping-solid.svg',
+        name: 'Compras',
+        route: '/inventory/purchases',
+        color: 'tertiary-color',
+      },
     ];
   }
 

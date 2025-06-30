@@ -1,0 +1,21 @@
+<div class="main-purchase">
+  <div class="menu-purchase">
+    <div *ngFor="let item of listSideNav" class="mb-2 mt-2">
+      <div class="menu-purchase-items">
+        <div
+          class="item-menu pointer p-2"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          #rla="routerLinkActive"
+          [ngClass]="rla.isActive ? 'router-active' : ''"
+        >
+          <div><app-icon [image]="item.icon" [color]="rla.isActive ? 'white' : 'gray'"></app-icon></div>
+          <div class="ms-2">{{ item.name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-purchases">
+    <router-outlet></router-outlet>
+  </div>
+</div>
