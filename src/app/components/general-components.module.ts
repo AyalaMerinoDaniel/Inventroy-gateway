@@ -10,6 +10,8 @@ import { BaseFiltersComponent } from './base-filters/base-filters.component';
 import { FlatButtonComponent } from './flat-button/flat-button.component';
 import { BaseDialogComponent } from './base-dialog/base-dialog.component';
 import { SelectorComponent } from './selector/selector.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { SectionCardComponent } from './section-card/section-card.component';
 
 @NgModule({
   declarations:[
@@ -20,7 +22,9 @@ import { SelectorComponent } from './selector/selector.component';
     BaseFiltersComponent,
     FlatButtonComponent,
     BaseDialogComponent,
-    SelectorComponent
+    SelectorComponent,
+    DatePickerComponent,
+    SectionCardComponent
   ],
   imports: [
     MaterialModule,
@@ -36,7 +40,9 @@ import { SelectorComponent } from './selector/selector.component';
     BaseFiltersComponent,
     FlatButtonComponent,
     BaseDialogComponent,
-    SelectorComponent
+    SelectorComponent,
+    DatePickerComponent,
+    SectionCardComponent
   ]
 })
 export class GeneralComponentsModule {}

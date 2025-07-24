@@ -19,6 +19,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { PermissionDirective } from './directives/permission/permission.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -39,7 +41,9 @@ import { PermissionDirective } from './directives/permission/permission.directiv
     MatAutocompleteModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatToolbarModule,
@@ -60,7 +64,9 @@ import { PermissionDirective } from './directives/permission/permission.directiv
     MatSnackBarModule,
     MatMenuModule,
     MatRadioModule,
-    PermissionDirective
+    PermissionDirective,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [
     PermissionDirective

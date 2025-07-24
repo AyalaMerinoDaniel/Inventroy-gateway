@@ -1,0 +1,20 @@
+<form [formGroup]="form" class="date-picker-form">
+  <mat-form-field class="w-100" [appearance]="appearance">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      [placeholder]="placeholder"
+      [formControlName]="controlName"
+      [matDatepicker]="picker"
+      [matDatepickerFilter]="dateFilter"
+      (dateChange)="onDateChange($event)"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    
+    <mat-error *ngIf="form.get(controlName)?.hasError('required') && (form.get(controlName)?.touched || form.get(controlName)?.dirty)">
+      Este campo es obligatorio
+    </mat-error>
+  </mat-form-field>
+</form>

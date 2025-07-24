@@ -1,0 +1,29 @@
+.content-purchases {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  width: 100%;
+}
+
+.total-summary-card {
+  background: var(--white);
+  border: 1px var(--gray-25) solid;
+  border-left: 4px solid var(--green);
+  border-radius: 10px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.total-summary-card .label {
+  color: var(--gray-black);
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+.total-summary-card .value {
+  font-weight: bold;
+  color: var(--green)
+}
+

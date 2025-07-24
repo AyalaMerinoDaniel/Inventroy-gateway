@@ -41,7 +41,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
           if (isLoginRequest) {
             this.messageService.showError('Credenciales inválidas');
-            return throwError(() => error);
+            return throwError(() => new Error('Credentials invalid'));
           }
           return this.handleUnauthorized(req, next);
         }
@@ -67,16 +67,17 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (!this.authService.getRefreshToken()) {
+    const refreshToken = this.authService.getRefreshToken();
+    if (!refreshToken) {
       this.authService.logout();
       this.messageService.showError('Por favor inicie sesión.')
+      return throwError(() => new Error('No refresh token found'));
     }
 
     if (!this.isRefreshingToken) {
       this.isRefreshingToken = true;
       this.tokenSubject.next(null);
-
-      return this.authService.refreshToken().pipe(
+      return this.authService.refreshToken(refreshToken).pipe(
         switchMap((response) => {
           const newToken = response.result.accessToken;
           const newRefreshToken = response.result.refreshToken;

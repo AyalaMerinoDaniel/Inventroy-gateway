@@ -65,8 +65,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  refreshToken(): Observable<ResponseApi> {
-  const refreshToken = this.getRefreshToken();
+  refreshToken(refreshToken: string): Observable<ResponseApi> {
   const body = {
     refreshToken: refreshToken
   }

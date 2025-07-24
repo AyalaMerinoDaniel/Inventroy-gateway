@@ -7,6 +7,7 @@ export enum EndpointsPaths {
   getProductById= '/product/{id}',
   productUpdate = '/product/update',
   productDeleteId = '/product/delete/{id}',
+  productSelector = '/product/selector',
 
   //categories
   category = '/category',
@@ -27,7 +28,13 @@ export enum EndpointsPaths {
   usersUpdate = '/users/update',
   usersdisableId = '/users/disable/{id}',
   usersEnableId = '/users/enable/{id}',
-  usersPasswordChange = '/users/password-change'
+  usersPasswordChange = '/users/password-change',
+  usersSelector = '/users/selector',
+
+  //purchases
+  purchaseAll = '/purchase/all',
+  purchaseCreate = '/purchase/create',
+  purchaseDetailsId = '/purchase/details/{id}',
 }
 
 export const endpointList: EndpointModel[] = [
@@ -56,6 +63,11 @@ export const endpointList: EndpointModel[] = [
     endpoint: EndpointsPaths.productDeleteId,
     environment: environment.apiUrl,
     variable: ['{id}'],
+  },
+  {
+    endpoint: EndpointsPaths.productSelector,
+    environment: environment.apiUrl,
+    variable: [],
   },
 
 
@@ -140,7 +152,28 @@ export const endpointList: EndpointModel[] = [
     environment: environment.apiUrl,
     variable: [],
   },
+  {
+    endpoint: EndpointsPaths.usersSelector,
+    environment: environment.apiUrl,
+    variable: [],
+  },
 
+  //purchases
+  {
+    endpoint: EndpointsPaths.purchaseAll,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.purchaseCreate,
+    environment: environment.apiUrl,
+    variable: [],
+  },
+  {
+    endpoint: EndpointsPaths.purchaseDetailsId,
+    environment: environment.apiUrl,
+    variable: ['{id}'],
+  },
   
   
 ];

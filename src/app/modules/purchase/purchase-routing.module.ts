@@ -18,6 +18,10 @@ const routes: Routes = [
         component: NewEditPurchaseComponent
       },
       {
+        path: 'details',
+        component: NewEditPurchaseComponent
+      },
+      {
         path: '**',
         redirectTo: ''
       }

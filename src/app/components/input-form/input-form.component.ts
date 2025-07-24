@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ValidationMessagesModel } from 'src/app/models/validations-messages.model';
 
@@ -21,6 +21,10 @@ export class InputFormComponent implements OnInit {
   { type: 'email', message: 'El formato del correo es inválido' },
   { type: 'pattern', message: 'El formato ingresado no es válido' }, 
   ];
+  @Input() debounce: number = 300;
+  @Input() isDecimal: boolean = false;
+
+  @Output() valueChange = new EventEmitter<any>();
 
   constructor() { }
 
@@ -37,9 +41,22 @@ export class InputFormComponent implements OnInit {
   emitValue(){
     var value = this.form.get(this.controlName)?.value;
     if (this.type === 'number') {
-      value = value === '' ? null : Number(value);
+      value = value === '' ? null : parseFloat(value);
     }
-    this.form.get(this.controlName)?.setValue(value);
+
+    setTimeout(() => {
+      this.valueChange.emit(value);
+    }, this.debounce);
   }
+
+  onKeyPress(event: KeyboardEvent) {
+    if (!this.isDecimal) {
+      if (event.key === '.' || event.key === ',') {
+        event.preventDefault();
+      }
+    }
+  }
+
+
 
 }
